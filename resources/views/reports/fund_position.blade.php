@@ -92,21 +92,13 @@
                                                     <th class="text-center">Balance w.r.t Final Budget</th>
                                                 </tr>
                                                 <?php
-                                                    $thisyearmonths = date('02',time());
-                                                    $var = explode(' - ',$financial_year);
-                                                    
-                                                    $filterfinancialyearone = $var[0];
-                                                    $filterfinancialyeartwo = $var[1];
+                                                    $thisyearmonths = date('08',time());
 
-                                                    if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
-                                                    {
-                                                        $filterfinancialyear = $var[1];
-                                                    }
-                                                    else
-                                                    {
-                                                        $filterfinancialyear = $var[0];
-                                                    }
+                                                    $financial = explode(' - ',$financial_year);
                                                     
+                                                    $financial_yearone = $financial[0];
+                                                    $financial_yeartwo = $financial[1];
+
                                                     if($thisyearmonths >= 01 AND $thisyearmonths <= 03)
                                                     {
                                                         $quarter = '3rd Quarter';
@@ -123,6 +115,7 @@
                                                     {
                                                         $quarter = '2nd Quarter';
                                                     }
+
                                                     $q = DB::table("head_categories")
                                                     ->orderby('head_category_code','asc')
                                                     ->get();
@@ -137,7 +130,7 @@
                                                         <?php
                                                             $q_1 = DB::table("head_categories_budgets")
                                                             ->where('head_category_financial_year','=',$financial_year)
-                                                            ->where('head_category_quarter','=','3rd Quarter')
+                                                            ->where('head_category_quarter','=','1st Quarter')
                                                             ->where('headcategoryid','=',$q->autoheadcategoryid)
                                                             ->get();
                                                             if(count($q_1) > 0)
@@ -226,7 +219,7 @@
                                                         <?php
                                                             $q_6 = DB::table("expenditures")
                                                             ->where('expenditure_financialyear','=',$financial_year)
-                                                            ->where('amount_date','like',$filterfinancialyearone.'-07%')
+                                                            ->where('amount_date','like',$financial_yearone.'-07%')
                                                             ->where('headcategoryid','=',$q->autoheadcategoryid)
                                                             ->sum('net_amount');
                                                             if(!empty($q_6))
@@ -244,7 +237,7 @@
                                                         <?php
                                                             $q_7 = DB::table("expenditures")
                                                             ->where('expenditure_financialyear','=',$financial_year)
-                                                            ->where('amount_date','like',$filterfinancialyearone.'-08%')
+                                                            ->where('amount_date','like',$financial_yearone.'-08%')
                                                             ->where('headcategoryid','=',$q->autoheadcategoryid)
                                                             ->sum('net_amount');
                                                             if(!empty($q_7))
@@ -261,7 +254,7 @@
                                                         <?php
                                                             $q_8 = DB::table("expenditures")
                                                             ->where('expenditure_financialyear','=',$financial_year)
-                                                            ->where('amount_date','like',$filterfinancialyearone.'-09%')
+                                                            ->where('amount_date','like',$financial_yearone.'-09%')
                                                             ->where('headcategoryid','=',$q->autoheadcategoryid)
                                                             ->sum('net_amount');
                                                             if(!empty($q_8))
@@ -278,7 +271,7 @@
                                                         <?php
                                                             $q_9 = DB::table("expenditures")
                                                             ->where('expenditure_financialyear','=',$financial_year)
-                                                            ->where('amount_date','like',$filterfinancialyearone.'-10%')
+                                                            ->where('amount_date','like',$financial_yearone.'-10%')
                                                             ->where('headcategoryid','=',$q->autoheadcategoryid)
                                                             ->sum('net_amount');
                                                             if(!empty($q_9))
@@ -295,7 +288,7 @@
                                                         <?php
                                                             $q_10 = DB::table("expenditures")
                                                             ->where('expenditure_financialyear','=',$financial_year)
-                                                            ->where('amount_date','like',$filterfinancialyearone.'-11%')
+                                                            ->where('amount_date','like',$financial_yearone.'-11%')
                                                             ->where('headcategoryid','=',$q->autoheadcategoryid)
                                                             ->sum('net_amount');
                                                             if(!empty($q_10))
@@ -312,7 +305,7 @@
                                                         <?php
                                                             $q_11 = DB::table("expenditures")
                                                             ->where('expenditure_financialyear','=',$financial_year)
-                                                            ->where('amount_date','like',$filterfinancialyearone.'-12%')
+                                                            ->where('amount_date','like',$financial_yearone.'-12%')
                                                             ->where('headcategoryid','=',$q->autoheadcategoryid)
                                                             ->sum('net_amount');
                                                             if(!empty($q_11))
@@ -329,7 +322,7 @@
                                                         <?php
                                                             $q_12 = DB::table("expenditures")
                                                             ->where('expenditure_financialyear','=',$financial_year)
-                                                            ->where('amount_date','like',$filterfinancialyeartwo.'-01%')
+                                                            ->where('amount_date','like',$financial_yeartwo.'-01%')
                                                             ->where('headcategoryid','=',$q->autoheadcategoryid)
                                                             ->sum('net_amount');
                                                             if(!empty($q_12))
@@ -346,7 +339,7 @@
                                                         <?php
                                                             $q_13 = DB::table("expenditures")
                                                             ->where('expenditure_financialyear','=',$financial_year)
-                                                            ->where('amount_date','like',$filterfinancialyeartwo.'-02%')
+                                                            ->where('amount_date','like',$financial_yeartwo.'-02%')
                                                             ->where('headcategoryid','=',$q->autoheadcategoryid)
                                                             ->sum('net_amount');
                                                             if(!empty($q_13))
@@ -363,7 +356,7 @@
                                                         <?php
                                                             $q_14 = DB::table("expenditures")
                                                             ->where('expenditure_financialyear','=',$financial_year)
-                                                            ->where('amount_date','like',$filterfinancialyeartwo.'-03%')
+                                                            ->where('amount_date','like',$financial_yeartwo.'-03%')
                                                             ->where('headcategoryid','=',$q->autoheadcategoryid)
                                                             ->sum('net_amount');
                                                             if(!empty($q_14))
@@ -380,7 +373,7 @@
                                                         <?php
                                                             $q_15 = DB::table("expenditures")
                                                             ->where('expenditure_financialyear','=',$financial_year)
-                                                            ->where('amount_date','like',$filterfinancialyeartwo.'-04%')
+                                                            ->where('amount_date','like',$financial_yeartwo.'-04%')
                                                             ->where('headcategoryid','=',$q->autoheadcategoryid)
                                                             ->sum('net_amount');
                                                             if(!empty($q_15))
@@ -397,7 +390,7 @@
                                                         <?php
                                                             $q_16 = DB::table("expenditures")
                                                             ->where('expenditure_financialyear','=',$financial_year)
-                                                            ->where('amount_date','like',$filterfinancialyeartwo.'-05%')
+                                                            ->where('amount_date','like',$financial_yeartwo.'-05%')
                                                             ->where('headcategoryid','=',$q->autoheadcategoryid)
                                                             ->sum('net_amount');
                                                             if(!empty($q_16))
@@ -414,7 +407,7 @@
                                                         <?php
                                                             $q_17 = DB::table("expenditures")
                                                             ->where('expenditure_financialyear','=',$financial_year)
-                                                            ->where('amount_date','like',$filterfinancialyeartwo.'-06%')
+                                                            ->where('amount_date','like',$financial_yeartwo.'-06%')
                                                             ->where('headcategoryid','=',$q->autoheadcategoryid)
                                                             ->sum('net_amount');
                                                             if(!empty($q_17))
@@ -437,7 +430,7 @@
                                                             {
                                                                 $q_18_1 = DB::table("expenditures")
                                                                 ->where('expenditure_financialyear','=',$financial_year)
-                                                                ->where('amount_date','like',$filterfinancialyear.'%')
+                                                                ->where('amount_date','like',$financial_year.'%')
                                                                 ->where('headcategoryid','=',$q->autoheadcategoryid)
                                                                 ->sum('net_amount');
                                                                 if(!empty($q_18_1))
@@ -464,7 +457,7 @@
                                                             {
                                                                 $q_19_1 = DB::table("expenditures")
                                                                 ->where('expenditure_financialyear','=',$financial_year)
-                                                                ->where('amount_date','like',$filterfinancialyear.'%')
+                                                                ->where('amount_date','like',$financial_year.'%')
                                                                 ->where('headcategoryid','=',$q->autoheadcategoryid)
                                                                 ->sum('net_amount');
                                                                 if(!empty($q_19_1))
@@ -500,7 +493,7 @@
                                                             <?php
                                                                 $q1_1 = DB::table("heads_budgets")
                                                                 ->where('head_financial_year','=',$financial_year)
-                                                                ->where('head_quarter','=','3rd Quarter')
+                                                                ->where('head_quarter','=','1st Quarter')
                                                                 ->where('headid','=',$q1->autoheadid)
                                                                 ->get();
                                                                 if(count($q1_1) > 0)
@@ -589,7 +582,7 @@
                                                             <?php
                                                                 $q1_6 = DB::table("expenditures")
                                                                 ->where('expenditure_financialyear','=',$financial_year)
-                                                                ->where('amount_date','like',$filterfinancialyear.'-07%')
+                                                                ->where('amount_date','like',$financial_yearone.'-07%')
                                                                 ->where('headid','=',$q1->autoheadid)
                                                                 ->sum('net_amount');
                                                                 if(!empty($q1_6))
@@ -607,7 +600,7 @@
                                                             <?php
                                                                 $q1_7 = DB::table("expenditures")
                                                                 ->where('expenditure_financialyear','=',$financial_year)
-                                                                ->where('amount_date','like',$filterfinancialyear.'-08%')
+                                                                ->where('amount_date','like',$financial_yearone.'-08%')
                                                                 ->where('headid','=',$q1->autoheadid)
                                                                 ->sum('net_amount');
                                                                 if(!empty($q1_7))
@@ -624,7 +617,7 @@
                                                             <?php
                                                                 $q1_8 = DB::table("expenditures")
                                                                 ->where('expenditure_financialyear','=',$financial_year)
-                                                                ->where('amount_date','like',$filterfinancialyear.'-09%')
+                                                                ->where('amount_date','like',$financial_yearone.'-09%')
                                                                 ->where('headid','=',$q1->autoheadid)
                                                                 ->sum('net_amount');
                                                                 if(!empty($q1_8))
@@ -641,7 +634,7 @@
                                                             <?php
                                                                 $q1_9 = DB::table("expenditures")
                                                                 ->where('expenditure_financialyear','=',$financial_year)
-                                                                ->where('amount_date','like',$filterfinancialyear.'-10%')
+                                                                ->where('amount_date','like',$financial_yearone.'-10%')
                                                                 ->where('headid','=',$q1->autoheadid)
                                                                 ->sum('net_amount');
                                                                 if(!empty($q1_9))
@@ -658,7 +651,7 @@
                                                             <?php
                                                                 $q1_10 = DB::table("expenditures")
                                                                 ->where('expenditure_financialyear','=',$financial_year)
-                                                                ->where('amount_date','like',$filterfinancialyear.'-11%')
+                                                                ->where('amount_date','like',$financial_yearone.'-11%')
                                                                 ->where('headid','=',$q1->autoheadid)
                                                                 ->sum('net_amount');
                                                                 if(!empty($q1_10))
@@ -675,7 +668,7 @@
                                                             <?php
                                                                 $q1_11 = DB::table("expenditures")
                                                                 ->where('expenditure_financialyear','=',$financial_year)
-                                                                ->where('amount_date','like',$filterfinancialyear.'-12%')
+                                                                ->where('amount_date','like',$financial_yearone.'-12%')
                                                                 ->where('headid','=',$q1->autoheadid)
                                                                 ->sum('net_amount');
                                                                 if(!empty($q1_11))
@@ -692,7 +685,7 @@
                                                             <?php
                                                                 $q1_12 = DB::table("expenditures")
                                                                 ->where('expenditure_financialyear','=',$financial_year)
-                                                                ->where('amount_date','like',$filterfinancialyear.'-01%')
+                                                                ->where('amount_date','like',$financial_yeartwo.'-01%')
                                                                 ->where('headid','=',$q1->autoheadid)
                                                                 ->sum('net_amount');
                                                                 if(!empty($q1_12))
@@ -709,7 +702,7 @@
                                                             <?php
                                                                 $q1_13 = DB::table("expenditures")
                                                                 ->where('expenditure_financialyear','=',$financial_year)
-                                                                ->where('amount_date','like',$filterfinancialyear.'-02%')
+                                                                ->where('amount_date','like',$financial_yeartwo.'-02%')
                                                                 ->where('headid','=',$q1->autoheadid)
                                                                 ->sum('net_amount');
                                                                 if(!empty($q1_13))
@@ -726,7 +719,7 @@
                                                             <?php
                                                                 $q1_14 = DB::table("expenditures")
                                                                 ->where('expenditure_financialyear','=',$financial_year)
-                                                                ->where('amount_date','like',$filterfinancialyear.'-03%')
+                                                                ->where('amount_date','like',$financial_yeartwo.'-03%')
                                                                 ->where('headid','=',$q1->autoheadid)
                                                                 ->sum('net_amount');
                                                                 if(!empty($q1_14))
@@ -743,7 +736,7 @@
                                                             <?php
                                                                 $q1_15 = DB::table("expenditures")
                                                                 ->where('expenditure_financialyear','=',$financial_year)
-                                                                ->where('amount_date','like',$filterfinancialyear.'-04%')
+                                                                ->where('amount_date','like',$financial_yeartwo.'-04%')
                                                                 ->where('headid','=',$q1->autoheadid)
                                                                 ->sum('net_amount');
                                                                 if(!empty($q1_15))
@@ -760,7 +753,7 @@
                                                             <?php
                                                                 $q1_16 = DB::table("expenditures")
                                                                 ->where('expenditure_financialyear','=',$financial_year)
-                                                                ->where('amount_date','like',$filterfinancialyear.'-05%')
+                                                                ->where('amount_date','like',$financial_yeartwo.'-05%')
                                                                 ->where('headid','=',$q1->autoheadid)
                                                                 ->sum('net_amount');
                                                                 if(!empty($q1_16))
@@ -777,7 +770,7 @@
                                                             <?php
                                                                 $q1_17 = DB::table("expenditures")
                                                                 ->where('expenditure_financialyear','=',$financial_year)
-                                                                ->where('amount_date','like',$filterfinancialyear.'-06%')
+                                                                ->where('amount_date','like',$financial_yeartwo.'-06%')
                                                                 ->where('headid','=',$q1->autoheadid)
                                                                 ->sum('net_amount');
                                                                 if(!empty($q1_17))
@@ -800,7 +793,7 @@
                                                                 {
                                                                     $q1_18_1 = DB::table("expenditures")
                                                                     ->where('expenditure_financialyear','=',$financial_year)
-                                                                    ->where('amount_date','like',$filterfinancialyear.'%')
+                                                                    ->where('amount_date','like',$financial_year.'%')
                                                                     ->where('headid','=',$q1->autoheadid)
                                                                     ->sum('net_amount');
                                                                     if(!empty($q1_18_1))
@@ -827,7 +820,7 @@
                                                                 {
                                                                     $q1_19_1 = DB::table("expenditures")
                                                                     ->where('expenditure_financialyear','=',$financial_year)
-                                                                    ->where('amount_date','like',$filterfinancialyear.'%')
+                                                                    ->where('amount_date','like',$financial_year.'%')
                                                                     ->where('headid','=',$q1->autoheadid)
                                                                     ->sum('net_amount');
                                                                     if(!empty($q1_19_1))
@@ -863,7 +856,7 @@
                                                                 <?php
                                                                     $q2_1 = DB::table("main_head_budgets")
                                                                     ->where('main_head_financial_year','=',$financial_year)
-                                                                    ->where('main_head_quarter','=','3rd Quarter')
+                                                                    ->where('main_head_quarter','=','1st Quarter')
                                                                     ->where('mainheadid','=',$q2->automainheadid)
                                                                     ->get();
                                                                     if(count($q2_1) > 0)
@@ -952,7 +945,7 @@
                                                                 <?php
                                                                     $q2_6 = DB::table("expenditures")
                                                                     ->where('expenditure_financialyear','=',$financial_year)
-                                                                    ->where('amount_date','like',$filterfinancialyear.'-07%')
+                                                                    ->where('amount_date','like',$financial_yearone.'-07%')
                                                                     ->where('mainheadid','=',$q2->automainheadid)
                                                                     ->sum('net_amount');
                                                                     if(!empty($q2_6))
@@ -969,7 +962,7 @@
                                                                 <?php
                                                                     $q2_7 = DB::table("expenditures")
                                                                     ->where('expenditure_financialyear','=',$financial_year)
-                                                                    ->where('amount_date','like',$filterfinancialyear.'-08%')
+                                                                    ->where('amount_date','like',$financial_yearone.'-08%')
                                                                     ->where('mainheadid','=',$q2->automainheadid)
                                                                     ->sum('net_amount');
                                                                     if(!empty($q2_7))
@@ -986,7 +979,7 @@
                                                                 <?php
                                                                     $q2_8 = DB::table("expenditures")
                                                                     ->where('expenditure_financialyear','=',$financial_year)
-                                                                    ->where('amount_date','like',$filterfinancialyear.'-09%')
+                                                                    ->where('amount_date','like',$financial_yearone.'-09%')
                                                                     ->where('mainheadid','=',$q2->automainheadid)
                                                                     ->sum('net_amount');
                                                                     if(!empty($q2_8))
@@ -1003,7 +996,7 @@
                                                                 <?php
                                                                     $q2_9 = DB::table("expenditures")
                                                                     ->where('expenditure_financialyear','=',$financial_year)
-                                                                    ->where('amount_date','like',$filterfinancialyear.'-10%')
+                                                                    ->where('amount_date','like',$financial_yearone.'-10%')
                                                                     ->where('mainheadid','=',$q2->automainheadid)
                                                                     ->sum('net_amount');
                                                                     if(!empty($q2_9))
@@ -1020,7 +1013,7 @@
                                                                 <?php
                                                                     $q2_10 = DB::table("expenditures")
                                                                     ->where('expenditure_financialyear','=',$financial_year)
-                                                                    ->where('amount_date','like',$filterfinancialyear.'-11%')
+                                                                    ->where('amount_date','like',$financial_yearone.'-11%')
                                                                     ->where('mainheadid','=',$q2->automainheadid)
                                                                     ->sum('net_amount');
                                                                     if(!empty($q2_10))
@@ -1037,7 +1030,7 @@
                                                                 <?php
                                                                     $q2_11 = DB::table("expenditures")
                                                                     ->where('expenditure_financialyear','=',$financial_year)
-                                                                    ->where('amount_date','like',$filterfinancialyear.'-12%')
+                                                                    ->where('amount_date','like',$financial_yearone.'-12%')
                                                                     ->where('mainheadid','=',$q2->automainheadid)
                                                                     ->sum('net_amount');
                                                                     if(!empty($q2_11))
@@ -1054,7 +1047,7 @@
                                                                 <?php
                                                                     $q2_12 = DB::table("expenditures")
                                                                     ->where('expenditure_financialyear','=',$financial_year)
-                                                                    ->where('amount_date','like',$filterfinancialyear.'-01%')
+                                                                    ->where('amount_date','like',$financial_yeartwo.'-01%')
                                                                     ->where('mainheadid','=',$q2->automainheadid)
                                                                     ->sum('net_amount');
                                                                     if(!empty($q2_12))
@@ -1071,7 +1064,7 @@
                                                                 <?php
                                                                     $q2_13 = DB::table("expenditures")
                                                                     ->where('expenditure_financialyear','=',$financial_year)
-                                                                    ->where('amount_date','like',$filterfinancialyear.'-02%')
+                                                                    ->where('amount_date','like',$financial_yeartwo.'-02%')
                                                                     ->where('mainheadid','=',$q2->automainheadid)
                                                                     ->sum('net_amount');
                                                                     if(!empty($q2_13))
@@ -1088,7 +1081,7 @@
                                                                 <?php
                                                                     $q2_14 = DB::table("expenditures")
                                                                     ->where('expenditure_financialyear','=',$financial_year)
-                                                                    ->where('amount_date','like',$filterfinancialyear.'-03%')
+                                                                    ->where('amount_date','like',$financial_yeartwo.'-03%')
                                                                     ->where('mainheadid','=',$q2->automainheadid)
                                                                     ->sum('net_amount');
                                                                     if(!empty($q2_14))
@@ -1105,7 +1098,7 @@
                                                                 <?php
                                                                     $q2_15 = DB::table("expenditures")
                                                                     ->where('expenditure_financialyear','=',$financial_year)
-                                                                    ->where('amount_date','like',$filterfinancialyear.'-04%')
+                                                                    ->where('amount_date','like',$financial_yeartwo.'-04%')
                                                                     ->where('mainheadid','=',$q2->automainheadid)
                                                                     ->sum('net_amount');
                                                                     if(!empty($q2_15))
@@ -1122,7 +1115,7 @@
                                                                 <?php
                                                                     $q2_16 = DB::table("expenditures")
                                                                     ->where('expenditure_financialyear','=',$financial_year)
-                                                                    ->where('amount_date','like',$filterfinancialyear.'-05%')
+                                                                    ->where('amount_date','like',$financial_yeartwo.'-05%')
                                                                     ->where('mainheadid','=',$q2->automainheadid)
                                                                     ->sum('net_amount');
                                                                     if(!empty($q2_16))
@@ -1139,7 +1132,7 @@
                                                                 <?php
                                                                     $q2_17 = DB::table("expenditures")
                                                                     ->where('expenditure_financialyear','=',$financial_year)
-                                                                    ->where('amount_date','like',$filterfinancialyear.'-06%')
+                                                                    ->where('amount_date','like',$financial_yeartwo.'-06%')
                                                                     ->where('mainheadid','=',$q2->automainheadid)
                                                                     ->sum('net_amount');
                                                                     if(!empty($q2_17))
@@ -1162,7 +1155,7 @@
                                                                     {
                                                                         $q2_18_1 = DB::table("expenditures")
                                                                         ->where('expenditure_financialyear','=',$financial_year)
-                                                                        ->where('amount_date','like',$filterfinancialyear.'%')
+                                                                        ->where('amount_date','like',$financial_year.'%')
                                                                         ->where('mainheadid','=',$q2->automainheadid)
                                                                         ->sum('net_amount');
                                                                         if(!empty($q2_18_1))
@@ -1189,7 +1182,7 @@
                                                                     {
                                                                         $q2_19_1 = DB::table("expenditures")
                                                                         ->where('expenditure_financialyear','=',$financial_year)
-                                                                        ->where('amount_date','like',$filterfinancialyear.'%')
+                                                                        ->where('amount_date','like',$financial_year.'%')
                                                                         ->where('mainheadid','=',$q2->automainheadid)
                                                                         ->sum('net_amount');
                                                                         if(!empty($q2_19_1))
@@ -1224,7 +1217,7 @@
                                                                     <?php
                                                                         $q3_1 = DB::table("sub_head_budgets")
                                                                         ->where('sub_head_financial_year','=',$financial_year)
-                                                                        ->where('sub_head_quarter','=','3rd Quarter')
+                                                                        ->where('sub_head_quarter','=','1st Quarter')
                                                                         ->where('subheadid','=',$q3->autosubheadid)
                                                                         ->get();
                                                                         if(count($q3_1) > 0)
@@ -1313,7 +1306,7 @@
                                                                     <?php
                                                                         $q3_6 = DB::table("expenditures")
                                                                         ->where('expenditure_financialyear','=',$financial_year)
-                                                                        ->where('amount_date','like',$filterfinancialyear.'-07%')
+                                                                        ->where('amount_date','like',$financial_yearone.'-07%')
                                                                         ->where('subheadid','=',$q3->autosubheadid)
                                                                         ->sum('net_amount');
                                                                         if(!empty($q3_6))
@@ -1330,7 +1323,7 @@
                                                                     <?php
                                                                         $q3_7 = DB::table("expenditures")
                                                                         ->where('expenditure_financialyear','=',$financial_year)
-                                                                        ->where('amount_date','like',$filterfinancialyear.'-08%')
+                                                                        ->where('amount_date','like',$financial_yearone.'-08%')
                                                                         ->where('subheadid','=',$q3->autosubheadid)
                                                                         ->sum('net_amount');
                                                                         if(!empty($q3_7))
@@ -1347,7 +1340,7 @@
                                                                     <?php
                                                                         $q3_8 = DB::table("expenditures")
                                                                         ->where('expenditure_financialyear','=',$financial_year)
-                                                                        ->where('amount_date','like',$filterfinancialyear.'-09%')
+                                                                        ->where('amount_date','like',$financial_yearone.'-09%')
                                                                         ->where('subheadid','=',$q3->autosubheadid)
                                                                         ->sum('net_amount');
                                                                         if(!empty($q3_8))
@@ -1364,7 +1357,7 @@
                                                                     <?php
                                                                         $q3_9 = DB::table("expenditures")
                                                                         ->where('expenditure_financialyear','=',$financial_year)
-                                                                        ->where('amount_date','like',$filterfinancialyear.'-10%')
+                                                                        ->where('amount_date','like',$financial_yearone.'-10%')
                                                                         ->where('subheadid','=',$q3->autosubheadid)
                                                                         ->sum('net_amount');
                                                                         if(!empty($q3_9))
@@ -1381,7 +1374,7 @@
                                                                     <?php
                                                                         $q3_10 = DB::table("expenditures")
                                                                         ->where('expenditure_financialyear','=',$financial_year)
-                                                                        ->where('amount_date','like',$filterfinancialyear.'-11%')
+                                                                        ->where('amount_date','like',$financial_yearone.'-11%')
                                                                         ->where('subheadid','=',$q3->autosubheadid)
                                                                         ->sum('net_amount');
                                                                         if(!empty($q3_10))
@@ -1398,7 +1391,7 @@
                                                                     <?php
                                                                         $q3_11 = DB::table("expenditures")
                                                                         ->where('expenditure_financialyear','=',$financial_year)
-                                                                        ->where('amount_date','like',$filterfinancialyear.'-12%')
+                                                                        ->where('amount_date','like',$financial_yearone.'-12%')
                                                                         ->where('subheadid','=',$q3->autosubheadid)
                                                                         ->sum('net_amount');
                                                                         if(!empty($q3_11))
@@ -1415,7 +1408,7 @@
                                                                     <?php
                                                                         $q3_12 = DB::table("expenditures")
                                                                         ->where('expenditure_financialyear','=',$financial_year)
-                                                                        ->where('amount_date','like',$filterfinancialyear.'-01%')
+                                                                        ->where('amount_date','like',$financial_yeartwo.'-01%')
                                                                         ->where('subheadid','=',$q3->autosubheadid)
                                                                         ->sum('net_amount');
                                                                         if(!empty($q3_12))
@@ -1432,7 +1425,7 @@
                                                                     <?php
                                                                         $q3_13 = DB::table("expenditures")
                                                                         ->where('expenditure_financialyear','=',$financial_year)
-                                                                        ->where('amount_date','like',$filterfinancialyear.'-02%')
+                                                                        ->where('amount_date','like',$financial_yeartwo.'-02%')
                                                                         ->where('subheadid','=',$q3->autosubheadid)
                                                                         ->sum('net_amount');
                                                                         if(!empty($q3_13))
@@ -1449,7 +1442,7 @@
                                                                     <?php
                                                                         $q3_14 = DB::table("expenditures")
                                                                         ->where('expenditure_financialyear','=',$financial_year)
-                                                                        ->where('amount_date','like',$filterfinancialyear.'-03%')
+                                                                        ->where('amount_date','like',$financial_yeartwo.'-03%')
                                                                         ->where('subheadid','=',$q3->autosubheadid)
                                                                         ->sum('net_amount');
                                                                         if(!empty($q3_14))
@@ -1466,7 +1459,7 @@
                                                                     <?php
                                                                         $q3_15 = DB::table("expenditures")
                                                                         ->where('expenditure_financialyear','=',$financial_year)
-                                                                        ->where('amount_date','like',$filterfinancialyear.'-04%')
+                                                                        ->where('amount_date','like',$financial_yeartwo.'-04%')
                                                                         ->where('subheadid','=',$q3->autosubheadid)
                                                                         ->sum('net_amount');
                                                                         if(!empty($q3_15))
@@ -1483,7 +1476,7 @@
                                                                     <?php
                                                                         $q3_16 = DB::table("expenditures")
                                                                         ->where('expenditure_financialyear','=',$financial_year)
-                                                                        ->where('amount_date','like',$filterfinancialyear.'-05%')
+                                                                        ->where('amount_date','like',$financial_yeartwo.'-05%')
                                                                         ->where('subheadid','=',$q3->autosubheadid)
                                                                         ->sum('net_amount');
                                                                         if(!empty($q3_16))
@@ -1500,7 +1493,7 @@
                                                                     <?php
                                                                         $q3_17 = DB::table("expenditures")
                                                                         ->where('expenditure_financialyear','=',$financial_year)
-                                                                        ->where('amount_date','like',$filterfinancialyear.'-06%')
+                                                                        ->where('amount_date','like',$financial_yeartwo.'-06%')
                                                                         ->where('subheadid','=',$q3->autosubheadid)
                                                                         ->sum('net_amount');
                                                                         if(!empty($q3_17))
@@ -1523,7 +1516,7 @@
                                                                         {
                                                                             $q3_18_1 = DB::table("expenditures")
                                                                             ->where('expenditure_financialyear','=',$financial_year)
-                                                                            ->where('amount_date','like',$filterfinancialyear.'%')
+                                                                            ->where('amount_date','like',$financial_year.'%')
                                                                             ->where('subheadid','=',$q3->autosubheadid)
                                                                             ->sum('net_amount');
                                                                             if(!empty($q3_18_1))
@@ -1550,7 +1543,7 @@
                                                                         {
                                                                             $q3_19_1 = DB::table("expenditures")
                                                                             ->where('expenditure_financialyear','=',$financial_year)
-                                                                            ->where('amount_date','like',$filterfinancialyear.'%')
+                                                                            ->where('amount_date','like',$financial_year.'%')
                                                                             ->where('subheadid','=',$q3->autosubheadid)
                                                                             ->sum('net_amount');
                                                                             if(!empty($q3_19_1))

@@ -118,7 +118,7 @@
                                             @foreach($query as $query)
                                             <div class="col-xxl-12">
                                                 <label for="particular">Particular<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="particular" value="{{ $query->particular}}" id="particular">
+                                                <input type="text" class="form-control" name="particular" value="{{ $query->description}}" id="particular">
                                                 <input type="hidden" class="form-control" name="last_balance_amount" value="{{ $query->last_balance_amount}}" id="last_balance_amount">
                                                 <span class="text-danger">@error('particular') {{ $message}} @enderror</span>
                                             </div>

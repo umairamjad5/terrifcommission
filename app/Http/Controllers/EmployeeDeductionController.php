@@ -89,7 +89,7 @@ class EmployeeDeductionController extends Controller
 				// dd($data);
                 $data['deduction_financialyear'] = '';
                 $data['deduction_quarter'] = '';
-                $thisyearmonths = date('02',time());
+                $thisyearmonths = date('m',time());
                 
                 if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
                 {
@@ -179,7 +179,7 @@ class EmployeeDeductionController extends Controller
 
                 $data['deduction_financialyear'] = '';
                 $data['deduction_quarter'] = '';
-                $thisyearmonths = date('02',time());
+                $thisyearmonths = date('m',time());
                 
                 if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
                 {

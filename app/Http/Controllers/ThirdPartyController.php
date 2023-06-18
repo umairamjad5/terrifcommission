@@ -127,7 +127,7 @@ class ThirdPartyController extends Controller
 				// dd($data);
                 $data['third_party_financialyear'] = '';
                 $data['third_party_quarter'] = '';
-                $thisyearmonths = date('02',time());
+                $thisyearmonths = date('m',time());
                 
                 if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
                 {
@@ -473,7 +473,7 @@ class ThirdPartyController extends Controller
 				// dd($data);
                 $data['third_party_financialyear'] = '';
                 $data['third_party_quarter'] = '';
-                $thisyearmonths = date('02',time());
+                $thisyearmonths = date('m',time());
                 
                 if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
                 {

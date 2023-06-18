@@ -138,7 +138,7 @@ class EmployeeAllowanceController extends Controller
 				// dd($data);
                 $data['allowance_financialyear'] = '';
                 $data['allowance_quarter'] = '';
-                $thisyearmonths = date('02',time());
+                $thisyearmonths = date('m',time());
                 
                 if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
                 {
@@ -409,7 +409,7 @@ class EmployeeAllowanceController extends Controller
 
             $data['allowance_financialyear'] = '';
             $data['allowance_quarter'] = '';
-            $thisyearmonths = date('02',time());
+            $thisyearmonths = date('m',time());
             
             if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
             {
@@ -519,7 +519,7 @@ class EmployeeAllowanceController extends Controller
 
                 $data['allowance_financialyear'] = '';
                 $data['allowance_quarter'] = '';
-                $thisyearmonths = date('02',time());
+                $thisyearmonths = date('m',time());
                 
                 if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
                 {

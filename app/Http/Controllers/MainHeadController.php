@@ -52,7 +52,7 @@ class MainHeadController extends Controller
 			try{
 				// dd($data);
                 $data['mainhead_financialyear'] = '';
-                $thisyearmonths = date('02',time());
+                $thisyearmonths = date('m',time());
                 
                 if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
                 {
@@ -120,7 +120,7 @@ class MainHeadController extends Controller
 			try{
 				// dd($data);
                 $data['mainhead_financialyear'] = '';
-                $thisyearmonths = date('02',time());
+                $thisyearmonths = date('m',time());
                 
                 if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
                 {

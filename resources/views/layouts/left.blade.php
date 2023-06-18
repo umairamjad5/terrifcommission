@@ -59,6 +59,45 @@
                                 </div>
                             </li>
                             <li>
+                                <a href="#reappropiations" data-bs-toggle="collapse">
+                                    <i data-feather="activity"></i>
+                                    <span> Reappropiations </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="reappropiations">
+                                    <ul class="nav-second-level">
+                                        <li><a href="{{ url('/action_reappropiations')}}">Add New</a></li>
+                                        <li><a href="{{ url('/reappropiations')}}">List All</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#additional_funds" data-bs-toggle="collapse">
+                                    <i data-feather="activity"></i>
+                                    <span> Additionals Funds </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="additional_funds">
+                                    <ul class="nav-second-level">
+                                        <li><a href="{{ url('/action_additional_funds')}}">Add New</a></li>
+                                        <li><a href="{{ url('/additional_funds')}}">List All</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#surrenders" data-bs-toggle="collapse">
+                                    <i data-feather="activity"></i>
+                                    <span> Surrenders </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="surrenders">
+                                    <ul class="nav-second-level">
+                                        <li><a href="{{ url('/action_surrenders')}}">Add New</a></li>
+                                        <li><a href="{{ url('/surrenders')}}">List All</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
                                 <a href="#expenditures" data-bs-toggle="collapse">
                                     <i data-feather="activity"></i>
                                     <span> Ledger/Bills </span>

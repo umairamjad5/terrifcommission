@@ -145,44 +145,44 @@ class ExpendituresController extends Controller
 				// dd($data);
                 $data['subheadid'] = $data['debit_head'];
 
-                $data['expenditure_financialyear'] = '';
-                $data['expenditure_quarter'] = '';
-                $thisyearmonths = date('02',time());
+                $data['expenditure_financialyear'] = '2022 - 2023';
+                $data['expenditure_quarter'] = $data['quarter'];
+                $thisyearmonths = date('m',time());
                 
-                if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
-                {
-                    $data['expenditure_financialyear'] = date('Y',strtotime('-1 year')).' - '.date('Y',time());
-                }
-                else
-                {
-                    $data['expenditure_financialyear'] = date('Y',time()).' - '.date('Y',strtotime('+1 year'));
-                }
+                // if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
+                // {
+                //     $data['expenditure_financialyear'] = date('Y',strtotime('-1 year')).' - '.date('Y',time());
+                // }
+                // else
+                // {
+                //     $data['expenditure_financialyear'] = date('Y',time()).' - '.date('Y',strtotime('+1 year'));
+                // }
                 
-                if($thisyearmonths >= 01 AND $thisyearmonths <= 03)
-                {
-                    $data['expenditure_quarter'] = '3rd Quarter';
-                }
-                if($thisyearmonths >= 04 AND $thisyearmonths <= 06)
-                {
-                    $data['expenditure_quarter'] = '4th Quarter';
-                }
-                if($thisyearmonths >= 07 AND $thisyearmonths < 10)
-                {
-                    $data['expenditure_quarter'] = '1st Quarter';
-                }
-                if($thisyearmonths >= 10 AND $thisyearmonths <= 12)
-                {
-                    $data['expenditure_quarter'] = '2nd Quarter';
-                }
+                // if($thisyearmonths >= 01 AND $thisyearmonths <= 03)
+                // {
+                //     $data['expenditure_quarter'] = '3rd Quarter';
+                // }
+                // if($thisyearmonths >= 04 AND $thisyearmonths <= 06)
+                // {
+                //     $data['expenditure_quarter'] = '4th Quarter';
+                // }
+                // if($thisyearmonths >= 07 AND $thisyearmonths < 10)
+                // {
+                //     $data['expenditure_quarter'] = '1st Quarter';
+                // }
+                // if($thisyearmonths >= 10 AND $thisyearmonths <= 12)
+                // {
+                //     $data['expenditure_quarter'] = '2nd Quarter';
+                // }
                 
-                $query_check = SubHeadBudget::where('subheadid','=',$data['subheadid'])
+                $query_check = SubHeadsBalanace::where('subheadid','=',$data['subheadid'])
                 ->where('sub_head_financial_year','=',$data['expenditure_financialyear'])
-                ->where('sub_head_quarter','=',$data['expenditure_quarter'])
                 ->get();
                 if(count($query_check) > 0)
                 {
                     foreach($query_check as $query_check);
-                    if($query_check->sub_head_budget_balance > $data['net_amount'])
+
+                    if($query_check->sub_head_balance_amount > $data['net_amount'])
                     {
                         $subheadids = SubHead::where('autosubheadid','=',$data['subheadid'])->get();
                         foreach($subheadids as $subheadids);
@@ -512,35 +512,35 @@ class ExpendituresController extends Controller
 				// dd($data);
                 $data['subheadid'] = $data['debit_head'];
 
-                $data['expenditure_financialyear'] = '';
-                $data['expenditure_quarter'] = '';
-                $thisyearmonths = date('02',time());
+                $data['expenditure_financialyear'] = '2022 - 2023';
+                $data['expenditure_quarter'] = $data['quarter'];
+                $thisyearmonths = date('m',time());
                 
-                if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
-                {
-                    $data['expenditure_financialyear'] = date('Y',strtotime('-1 year')).' - '.date('Y',time());
-                }
-                else
-                {
-                    $data['expenditure_financialyear'] = date('Y',time()).' - '.date('Y',strtotime('+1 year'));
-                }
+                // if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
+                // {
+                //     $data['expenditure_financialyear'] = date('Y',strtotime('-1 year')).' - '.date('Y',time());
+                // }
+                // else
+                // {
+                //     $data['expenditure_financialyear'] = date('Y',time()).' - '.date('Y',strtotime('+1 year'));
+                // }
                 
-                if($thisyearmonths >= 01 AND $thisyearmonths <= 03)
-                {
-                    $data['expenditure_quarter'] = '3rd Quarter';
-                }
-                if($thisyearmonths >= 04 AND $thisyearmonths <= 06)
-                {
-                    $data['expenditure_quarter'] = '4th Quarter';
-                }
-                if($thisyearmonths >= 07 AND $thisyearmonths < 10)
-                {
-                    $data['expenditure_quarter'] = '1st Quarter';
-                }
-                if($thisyearmonths >= 10 AND $thisyearmonths <= 12)
-                {
-                    $data['expenditure_quarter'] = '2nd Quarter';
-                }
+                // if($thisyearmonths >= 01 AND $thisyearmonths <= 03)
+                // {
+                //     $data['expenditure_quarter'] = '3rd Quarter';
+                // }
+                // if($thisyearmonths >= 04 AND $thisyearmonths <= 06)
+                // {
+                //     $data['expenditure_quarter'] = '4th Quarter';
+                // }
+                // if($thisyearmonths >= 07 AND $thisyearmonths < 10)
+                // {
+                //     $data['expenditure_quarter'] = '1st Quarter';
+                // }
+                // if($thisyearmonths >= 10 AND $thisyearmonths <= 12)
+                // {
+                //     $data['expenditure_quarter'] = '2nd Quarter';
+                // }
                 
                 $query_check = SubHeadBudget::where('subheadid','=',$data['subheadid'])
                 ->where('sub_head_financial_year','=',$data['expenditure_financialyear'])

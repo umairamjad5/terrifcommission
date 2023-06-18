@@ -50,35 +50,35 @@ class OverAllBankBalanceController extends Controller
             $data = $request->input();
 			try{
 				// dd($data);
-                $data['financial_year'] = '';
-                $data['quarter'] = '';
-                $thisyearmonths = date('02',time());
+                $data['financial_year'] = '2022 - 2023';
+                $data['quarter'] = '4th Quarter';
+                $thisyearmonths = date('m',time());
                 
-                if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
-                {
-                    $data['financial_year'] = date('Y',strtotime('-1 year')).' - '.date('Y',time());
-                }
-                else
-                {
-                    $data['financial_year'] = date('Y',time()).' - '.date('Y',strtotime('+1 year'));
-                }
+                // if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
+                // {
+                //     $data['financial_year'] = date('Y',strtotime('-1 year')).' - '.date('Y',time());
+                // }
+                // else
+                // {
+                //     $data['financial_year'] = date('Y',time()).' - '.date('Y',strtotime('+1 year'));
+                // }
                 
-                if($thisyearmonths >= 01 AND $thisyearmonths <= 03)
-                {
-                    $data['quarter'] = '3rd Quarter';
-                }
-                if($thisyearmonths >= 04 AND $thisyearmonths <= 06)
-                {
-                    $data['quarter'] = '4th Quarter';
-                }
-                if($thisyearmonths >= 07 AND $thisyearmonths < 10)
-                {
-                    $data['quarter'] = '1st Quarter';
-                }
-                if($thisyearmonths >= 10 AND $thisyearmonths <= 12)
-                {
-                    $data['quarter'] = '2nd Quarter';
-                }
+                // if($thisyearmonths >= 01 AND $thisyearmonths <= 03)
+                // {
+                //     $data['quarter'] = '3rd Quarter';
+                // }
+                // if($thisyearmonths >= 04 AND $thisyearmonths <= 06)
+                // {
+                //     $data['quarter'] = '4th Quarter';
+                // }
+                // if($thisyearmonths >= 07 AND $thisyearmonths < 10)
+                // {
+                //     $data['quarter'] = '1st Quarter';
+                // }
+                // if($thisyearmonths >= 10 AND $thisyearmonths <= 12)
+                // {
+                //     $data['quarter'] = '2nd Quarter';
+                // }
                 $query = OverAllBankBalance::where('bankfinancialyear','=',$data['financial_year'])
                 ->where('bank_quarterly','=',$data['quarter'])->get();
                 if(count($query) == 1)
@@ -213,35 +213,35 @@ class OverAllBankBalanceController extends Controller
             $data = $request->input();
 			try{
 				// dd($data);
-                $data['financial_year'] = '';
-                $data['quarter'] = '';
-                $thisyearmonths = date('02',time());
+                $data['financial_year'] = '2022 - 2023';
+                $data['quarter'] = '4th Quarter';
+                $thisyearmonths = date('m',time());
                 
-                if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
-                {
-                    $data['financial_year'] = date('Y',strtotime('-1 year')).' - '.date('Y',time());
-                }
-                else
-                {
-                    $data['financial_year'] = date('Y',time()).' - '.date('Y',strtotime('+1 year'));
-                }
+                // if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
+                // {
+                //     $data['financial_year'] = date('Y',strtotime('-1 year')).' - '.date('Y',time());
+                // }
+                // else
+                // {
+                //     $data['financial_year'] = date('Y',time()).' - '.date('Y',strtotime('+1 year'));
+                // }
                 
-                if($thisyearmonths >= 01 AND $thisyearmonths <= 03)
-                {
-                    $data['quarter'] = '3rd Quarter';
-                }
-                if($thisyearmonths >= 04 AND $thisyearmonths <= 06)
-                {
-                    $data['quarter'] = '4th Quarter';
-                }
-                if($thisyearmonths >= 07 AND $thisyearmonths < 10)
-                {
-                    $data['quarter'] = '1st Quarter';
-                }
-                if($thisyearmonths >= 10 AND $thisyearmonths <= 12)
-                {
-                    $data['quarter'] = '2nd Quarter';
-                }
+                // if($thisyearmonths >= 01 AND $thisyearmonths <= 03)
+                // {
+                //     $data['quarter'] = '3rd Quarter';
+                // }
+                // if($thisyearmonths >= 04 AND $thisyearmonths <= 06)
+                // {
+                //     $data['quarter'] = '4th Quarter';
+                // }
+                // if($thisyearmonths >= 07 AND $thisyearmonths < 10)
+                // {
+                //     $data['quarter'] = '1st Quarter';
+                // }
+                // if($thisyearmonths >= 10 AND $thisyearmonths <= 12)
+                // {
+                //     $data['quarter'] = '2nd Quarter';
+                // }
                 if($data['quarterly_amount'] > $data['diff_amount'])
                 {
                     $bank_budget = OverAllBankBalance::where("autobankquarterlybudgetid",'=',$data['autobankquarterlybudgetid'])->update(

@@ -75,18 +75,18 @@
                                     </tr>
                                     @foreach($array as $row)
                                     <tr>
-                                        <td></td>
+                                        <td>{{$row->autoledgerid}}</td>
                                         <td>{{ $row->amount_date}}</td>
                                         <td>
                                             @if($row->subheadid != 0)
                                             @php
                                                 $arr = \App\Models\SubHead::where('autosubheadid',$row->subheadid)->first();
-                                                echo $arr->sub_head_name;
                                             @endphp
+                                            {{$arr->sub_head_name}} ({{$arr->sub_head_code}})
                                             @endif
                                         </td>
                                         <td>{{ number_format($row->debit_amount)}}</td>
-                                        <td>{{ $row->description}}</td>
+                                        <td>{{ $row->description}} <br>({{ $row->payable_to}})</td>
                                         <td>Bank</td>
                                         <td>{{ number_format($row->credit_amount)}}</td>
                                         <td>{{ $row->description_from}}</td>

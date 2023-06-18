@@ -23,7 +23,12 @@
 
 		<!-- icons -->
 		<link href="{{ asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
-
+        <style>
+            th
+            {
+                vertical-align: middle;
+            }
+        </style>
     </head>
 
     <body class="loading" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "light"}, "showRightSidebarOnPageLoad": true}'>

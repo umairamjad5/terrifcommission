@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <?php
-                    $thisyearmonths = date('02',time());
+                    $thisyearmonths = date('m',time());
                     if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
                     {
                         $financial_year = date('Y',strtotime('-1 year')).' - '.date('Y',time());
@@ -82,7 +82,7 @@
                                                 </select>
                                                 <span class="text-danger">@error('debit_head') {{ $message}} @enderror</span>
                                             </div>
-                                            <div class="col-lg-2">
+                                            <div class="col-lg-1">
                                                 <label for="bill_type">Bill Type<span class="text-danger">*</span></label>
                                                 <select name="bill_type" id="bill_type" class="form-control">
                                                     <option value="">Select One</option>
@@ -90,6 +90,17 @@
                                                     <option value="P/B" <?php if($array1->bill_type == "P/B") echo 'selected';?>>P/B</option>
                                                 </select>
                                                 <span class="text-danger">@error('bill_type') {{ $message}} @enderror</span>
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <label for="quarter">Quarter<span class="text-danger">*</span></label>
+                                                <select name="quarter" id="quarter" class="form-control">
+                                                    <option value="">Select One</option>
+                                                    <option value="1st Quarter" <?php if($array1->expenditure_quarter == "1st Quarter") echo 'selected';?>>1st Quarter</option>
+                                                    <option value="2nd Quarter" <?php if($array1->expenditure_quarter == "2nd Quarter") echo 'selected';?>>2nd Quarter</option>
+                                                    <option value="3rd Quarter" <?php if($array1->expenditure_quarter == "3rd Quarter") echo 'selected';?>>3rd Quarter</option>
+                                                    <option value="4th Quarter" <?php if($array1->expenditure_quarter == "4th Quarter") echo 'selected';?>>4th Quarter</option>
+                                                </select>
+                                                <span class="text-danger">@error('quarter') {{ $message}} @enderror</span>
                                             </div>
                                             <div class="col-lg-4">
                                                 <label for="bill_no">Bill No<span class="text-danger">*</span></label>
@@ -230,7 +241,7 @@
                                                 </select>
                                                 <span class="text-danger">@error('debit_head') {{ $message}} @enderror</span>
                                             </div>
-                                            <div class="col-lg-2">
+                                            <div class="col-lg-1">
                                                 <label for="bill_type">Bill Type<span class="text-danger">*</span></label>
                                                 <select name="bill_type" id="bill_type" class="form-control">
                                                     <option value="">Select One</option>
@@ -238,6 +249,17 @@
                                                     <option value="P/B" <?php if(old('bill_type') == "P/B") echo 'selected';?>>P/B</option>
                                                 </select>
                                                 <span class="text-danger">@error('bill_type') {{ $message}} @enderror</span>
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <label for="quarter">Quarter<span class="text-danger">*</span></label>
+                                                <select name="quarter" id="quarter" class="form-control">
+                                                    <option value="">Select One</option>
+                                                    <option value="1st Quarter" <?php if(old('quarter') == "1st Quarter") echo 'selected';?>>1st Quarter</option>
+                                                    <option value="2nd Quarter" <?php if(old('quarter') == "2nd Quarter") echo 'selected';?>>2nd Quarter</option>
+                                                    <option value="3rd Quarter" <?php if(old('quarter') == "3rd Quarter") echo 'selected';?>>3rd Quarter</option>
+                                                    <option value="4th Quarter" <?php if(old('quarter') == "4th Quarter") echo 'selected';?>>4th Quarter</option>
+                                                </select>
+                                                <span class="text-danger">@error('quarter') {{ $message}} @enderror</span>
                                             </div>
                                             <div class="col-lg-4">
                                                 <label for="bill_no">Bill No<span class="text-danger">*</span></label>

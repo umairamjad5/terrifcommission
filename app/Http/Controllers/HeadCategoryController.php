@@ -49,7 +49,7 @@ class HeadCategoryController extends Controller
 			try{
 				// dd($data);
                 $data['headcategory_financialyear'] = '';
-                $thisyearmonths = date('02',time());
+                $thisyearmonths = date('m',time());
                 
                 if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
                 {
@@ -113,7 +113,7 @@ class HeadCategoryController extends Controller
 			try{
 				// dd($data);
                 $data['headcategory_financialyear'] = '';
-                $thisyearmonths = date('02',time());
+                $thisyearmonths = date('m',time());
                 
                 if($thisyearmonths >= 01 AND $thisyearmonths <= 06)
                 {

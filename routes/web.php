@@ -25,6 +25,10 @@ use App\Http\Controllers\EmployeeMotorCycleLoanController;
 use App\Http\Controllers\ThirdPartyController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\EmployeeOtherDeductionsController;
+use App\Http\Controllers\ReappropiationsController;
+use App\Http\Controllers\AdditionalFundsController;
+use App\Http\Controllers\SurrendersController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -324,3 +328,30 @@ Route::get('/motorcar_loan_report',[ReportsController::class,'motorcar_loan_repo
 Route::post('/motorcar_loan_report_db',[ReportsController::class,'motorcar_loan_report_db'])->name('motorcar-loan-report-db');
 Route::get('/motorcycle_loan_report',[ReportsController::class,'motorcycle_loan_report']);
 Route::post('/motorcycle_loan_report_db',[ReportsController::class,'motorcycle_loan_report_db'])->name('motorcycle-loan-report-db');
+
+// Reappropiations
+Route::get('/reappropiations',[ReappropiationsController::class,'reappropiations']);
+Route::get('/action_reappropiations',[ReappropiationsController::class,'action_reappropiations']);
+Route::post('/reappropiation_db',[ReappropiationsController::class,'reappropiation_db'])->name('reappropiation-db');
+Route::get('/update_reappropiation/{id}',[ReappropiationsController::class,'update_reappropiation']);
+Route::post('/update_reappropiation_db',[ReappropiationsController::class,'update_reappropiation_db'])->name('update-reappropiation-db');
+Route::get('/delete_reappropiation/{id}',[ReappropiationsController::class,'delete_reappropiation']);
+Route::post('/delete_multiple_reappropiation',[ReappropiationsController::class,'delete_multiple_reappropiation'])->name('delete-multiple-reappropiation');
+
+// Additional Funds
+Route::get('/additional_funds',[AdditionalFundsController::class,'additional_funds']);
+Route::get('/action_additional_funds',[AdditionalFundsController::class,'action_additional_funds']);
+Route::post('/additional_fund_db',[AdditionalFundsController::class,'additional_fund_db'])->name('additional-fund-db');
+Route::get('/update_additional_fund/{id}',[AdditionalFundsController::class,'update_additional_fund']);
+Route::post('/update_additional_fund_db',[AdditionalFundsController::class,'update_additional_fund_db'])->name('update-additional-fund-db');
+Route::get('/delete_additional_fund/{id}',[AdditionalFundsController::class,'delete_additional_fund']);
+Route::post('/delete_multiple_additional_fund',[AdditionalFundsController::class,'delete_multiple_additional_fund'])->name('delete-multiple-additional-fund');
+
+// Surrenders
+Route::get('/surrenders',[SurrendersController::class,'surrenders']);
+Route::get('/action_surrenders',[SurrendersController::class,'action_surrenders']);
+Route::post('/surrender_db',[SurrendersController::class,'surrender_db'])->name('surrender-db');
+Route::get('/update_surrender/{id}',[SurrendersController::class,'update_surrender']);
+Route::post('/update_surrender_db',[SurrendersController::class,'update_surrender_db'])->name('update-surrender-db');
+Route::get('/delete_surrender/{id}',[SurrendersController::class,'delete_surrender']);
+Route::post('/delete_multiple_surrender',[SurrendersController::class,'delete_multiple_surrender'])->name('delete-multiple-surrender');
